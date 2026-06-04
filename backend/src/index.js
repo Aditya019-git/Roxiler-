@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin.js';
 import userRoutes from './routes/user.js';
+import ownerRoutes from './routes/owner.js';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use('/api/auth',authRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/user',userRoutes);
+app.use('/api/owner',ownerRoutes);
 
 app.get('/',(req,res)=>{
     res.send("Roxiler Store Rating API is running with ES Modules!");

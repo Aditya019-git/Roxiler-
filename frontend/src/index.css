@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #0f172a; /* Slate-900 */
+  color: #f8fafc; /* Slate-50 */
+  min-height: 100vh;
+}

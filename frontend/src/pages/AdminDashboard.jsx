@@ -14,7 +14,7 @@ const AdminDashboard = () => {
         setStats(res.data);
       } catch (err) {
         if (err.response?.status === 401 || err.response?.status === 403) {
-          navigate('/login'); // Not authorized, kick to login
+          navigate('/login');
         }
       } finally {
         setLoading(false);
@@ -49,19 +49,14 @@ const AdminDashboard = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 */}
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all transform hover:-translate-y-2 shadow-xl">
             <h3 className="text-gray-400 text-lg font-medium mb-2">Total Users</h3>
             <p className="text-5xl font-black text-blue-400">{stats.totalUsers}</p>
           </div>
-          
-          {/* Card 2 */}
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all transform hover:-translate-y-2 shadow-xl">
             <h3 className="text-gray-400 text-lg font-medium mb-2">Total Stores</h3>
             <p className="text-5xl font-black text-purple-400">{stats.totalStores}</p>
           </div>
-          
-          {/* Card 3 */}
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all transform hover:-translate-y-2 shadow-xl">
             <h3 className="text-gray-400 text-lg font-medium mb-2">Total Ratings</h3>
             <p className="text-5xl font-black text-emerald-400">{stats.totalRatings}</p>

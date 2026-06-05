@@ -14,7 +14,6 @@ const UpdatePassword = () => {
 
   const user = JSON.parse(localStorage.getItem('user') || 'null');
 
-  // Redirect back to the correct dashboard based on role
   const handleBack = () => {
     if (!user) return navigate('/login');
     if (user.role === 'SYSTEM_ADMIN') navigate('/admin');

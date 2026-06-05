@@ -30,7 +30,8 @@ const getStores=async(req,res)=>{
                 email:store.email,
                 address:store.address,
                 averageRating:avgRating,
-                myRating:userRating?userRating.score:null
+                myRating:userRating?userRating.score:null,
+                myRatingId:userRating?userRating.id:null
             };
         });
         res.status(200).json(storesWithData);

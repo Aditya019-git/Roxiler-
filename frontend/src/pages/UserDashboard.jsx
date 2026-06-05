@@ -6,6 +6,7 @@ const UserDashboard = () => {
   const [stores, setStores] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
+  const [editingStoreId, setEditingStoreId] = useState(null);
   const navigate = useNavigate();
 
   const fetchStores = async () => {
@@ -19,7 +20,6 @@ const UserDashboard = () => {
     }
   };
 
-  // Fetch stores on mount and when search changes
   useEffect(() => {
     fetchStores();
   }, [search]);
@@ -30,19 +30,22 @@ const UserDashboard = () => {
     navigate('/login');
   };
 
-  const submitRating = async (storeId, score, isUpdate) => {
+  const submitRating = async (storeId, score) => {
     try {
-      if (isUpdate) {
-        // Find the ratingId from backend (we'd normally pass it, but for simplicity we rely on the backend to handle updates if we refactored, 
-        // wait, our backend needs the exact ratingId. Let's just catch the error and tell them)
-        alert("To update, we need the rating ID. Let's just submit a new rating for now!");
-      } else {
-        await api.post('/user/ratings', { storeId, score });
-        alert('Rating submitted successfully!');
-        fetchStores(); // Refresh list to show new average and myRating
-      }
+      await api.post('/user/ratings', { storeId, score });
+      fetchStores();
     } catch (err) {
       alert(err.response?.data?.error || 'Failed to submit rating.');
+    }
+  };
+
+  const updateRating = async (ratingId, score) => {
+    try {
+      await api.put(`/user/ratings/${ratingId}`, { score });
+      setEditingStoreId(null);
+      fetchStores();
+    } catch (err) {
+      alert(err.response?.data?.error || 'Failed to update rating.');
     }
   };
 

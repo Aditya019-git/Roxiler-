@@ -64,6 +64,12 @@ const UserDashboard = () => {
               onChange={(e) => setSearch(e.target.value)}
               className="bg-white/5 border border-white/10 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all w-64"
             />
+            <button
+              onClick={() => navigate('/update-password')}
+              className="px-6 py-2 bg-purple-500/10 text-purple-400 border border-purple-500/50 rounded-lg hover:bg-purple-500 hover:text-white transition-all font-semibold"
+            >
+              Change Password
+            </button>
             <button 
               onClick={handleLogout}
               className="px-6 py-2 bg-red-500/10 text-red-400 border border-red-500/50 rounded-lg hover:bg-red-500 hover:text-white transition-all font-semibold shadow-[0_0_15px_rgba(239,68,68,0.3)]"
